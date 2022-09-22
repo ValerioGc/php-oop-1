@@ -13,10 +13,18 @@ class Movie {
     }
 
     public function getname(){
-        if ($this->year != null) {
-            echo 'Il film selezionato è' . ' ' . $this->name . ',' . ' ' . 'regia di' . ' ' . $this->director . ' ' . 'del' . ' ' . $this->year;
-        } else {
-            echo 'Il film selezionato è' . ' ' . $this->name . ',' . ' ' . 'regia di' . ' ' . $this->director;
+        try {
+            if (is_string($this->name)) {
+                if ($this->year != null) {
+                    echo 'Il film selezionato è' . ' ' . '<b>' . $this->name . '</b>' . ',' . ' ' . 'regia di' . ' ' . $this->director . ' ' . 'del' . ' ' . $this->year;
+                } else {
+                    echo 'Il film selezionato è' . ' ' . '<b>' . $this->name . '</b>' . ',' . ' ' . 'regia di' . ' ' . $this->director;
+                }
+            } else {
+                throw new Exception('Il valore inserito nonè una stringa');
+            }
+        } catch (Exception $z) {
+            echo 'Errore!' . ' ' . $z->getMessage();
         }
     }
 }
