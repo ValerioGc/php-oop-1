@@ -5,7 +5,6 @@ class Movie {
     public $year;
     public $director;
 
-
     public function __construct($movieName, $movieYear, $movieDirector  = null){
         $this->name = $movieName;
         $this->year = $movieYear;
